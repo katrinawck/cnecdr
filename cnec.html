@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNEC 經濟學全知識精華筆記</title>
+  
+  <!-- 引入 React, ReactDOM 和 Babel -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
+  <!-- 引入 Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    /* 自定義滾動條與表格樣式 */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    
+    table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
+    th { background-color: #f1f5f9; color: #334155; font-weight: 700; text-align: left; padding: 0.75rem; border: 1px solid #e2e8f0; }
+    td { padding: 0.75rem; border: 1px solid #e2e8f0; color: #475569; }
+    tr:nth-child(even) { background-color: #f8fafc; }
+  </style>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // ==========================================
+    // 章節內容組件
+    // ==========================================
+
+    // 第一章：微觀經濟學基礎
+    const Chapter1 = () => (
+      <div className="space-y-8 animate-fade-in-up">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-800 mb-4 border-b-2 border-indigo-200 pb-2">1. 經濟學基礎與市場運作</h2>
+          <p className="text-slate-600 mb-6">經濟學的核心是研究在「資源稀缺」的情況下，如何做出最優的選擇。所有決策都遵循一個黃金法則：<strong>邊際收益 = 邊際成本 (MB = MC)</strong>。</p>
+        </div>
+
+        {/* 雙市場循環模型 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">🔄 雙市場循環模型 (Circular Flow Model)</h3>
+          <p className="text-slate-600 mb-4">經濟體中資金與資源在家庭(Households)與企業(Firms)間的流動。</p>
+          <table>
+            <thead><tr><th>市場類型</th><th>實體流向 (資源/商品)</th><th>資金流向 (錢)</th><th>核心概念</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>產品市場 (Product Market)</strong></td>
+                <td>企業 ➔ 家庭 (賣商品)</td>
+                <td>家庭 ➔ 企業 (消費支出)</td>
+                <td>消費支出 = 企業營業額</td>
+              </tr>
+              <tr>
+                <td><strong>資源市場 (Resource Market)</strong></td>
+                <td>家庭 ➔ 企業 (提供勞力/土地)</td>
+                <td>企業 ➔ 家庭 (發工資/租金)</td>
+                <td>企業成本 = 家庭收入</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* PPC 與 機會成本 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-indigo-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">📈 生產可能性曲線 (PPC) 與 機會成本</h3>
+          <p className="text-slate-600 mb-4">PPC 顯示在資源用盡時，兩種產品能生產的最大組合。機會成本是指你做一個選擇時，放棄的<strong>最大價值替代品</strong>。</p>
+          
+          <div className="bg-amber-50 rounded-lg p-4 mb-4 border border-amber-200">
+            <p className="font-bold text-amber-800 mb-1">💡 生活例子：機會成本與隱性成本</p>
+            <p className="text-amber-700">假設星期四的機票是 $275，星期六是 $325。表面看星期四便宜，但如果你星期四要請假，少賺了 $200 的工資（隱性成本）。那麼星期四機票的<strong>真實機會成本</strong>是 $275 + $200 = $475！所以其實買星期六的機票更划算。</p>
+          </div>
+
+          <table>
+            <thead><tr><th>PPC 點的位置</th><th>經濟學意義</th></tr></thead>
+            <tbody>
+              <tr><td><strong>曲線上 (On the curve)</strong></td><td>效率最高 (Productive Efficiency)，資源已用盡。</td></tr>
+              <tr><td><strong>曲線內 (Inside the curve)</strong></td><td>無效率 (Inefficiency)，有資源被閒置，例如<strong>失業</strong>。</td></tr>
+              <tr><td><strong>曲線外 (Outside the curve)</strong></td><td>目前無法達到 (Unattainable)，除非有經濟增長。</td></tr>
+            </tbody>
+          </table>
+          <p className="text-sm text-slate-500 mt-2">⚠️ 考試陷阱：失業只會讓你處於曲線內部，不會讓整條曲線向內移動。只有資源被摧毀（如地震）才會讓曲線向內移。</p>
+        </div>
+
+        {/* 比較優勢 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-emerald-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">🌍 絕對優勢 vs 比較優勢</h3>
+          <p className="text-slate-600 mb-4">國際貿易的基礎是<strong>比較優勢 (Comparative Advantage)</strong>，即誰的機會成本低，誰就該專門生產該產品。</p>
+          <table>
+            <thead><tr><th>題目類型</th><th>比較方法</th><th>決策原則 (誰有優勢)</th><th>計算機會成本 (A的成本)</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>產量題 (Output)</strong><br/><span className="text-sm font-normal">同時間內誰做得多</span></td>
+                <td>比較產量多寡</td>
+                <td>數字<strong>越大</strong>越好</td>
+                <td>放棄的 B產量 / 得到的 A產量<br/>(Given up / Gained)</td>
+              </tr>
+              <tr>
+                <td><strong>投入題 (Input)</strong><br/><span className="text-sm font-normal">做同一件貨誰花的時間少</span></td>
+                <td>比較耗時/資源多寡</td>
+                <td>數字<strong>越小</strong>越好</td>
+                <td>得到的 B時間 / 放棄的 A時間<br/>(Gained / Given up)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 供需與彈性 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-rose-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">⚖️ 供給、需求與彈性 (Supply, Demand & Elasticity)</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <h4 className="font-bold text-slate-700 mb-2">使需求曲線移動的 5 大因素</h4>
+              <ul className="list-disc pl-5 text-slate-600 space-y-1">
+                <li>偏好 (研究說喝奶變聰明 ➔ 需求↑)</li>
+                <li>消費者數量 (人口變多 ➔ 需求↑)</li>
+                <li>相關商品價格 (百事可樂加價 ➔ 可口可樂需求↑)</li>
+                <li>收入 (收入↑ ➔ 正常商品需求↑，劣質品↓)</li>
+                <li>預期價格 (預期下週大減價 ➔ 現在需求↓)</li>
+              </ul>
+            </div>
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <h4 className="font-bold text-slate-700 mb-2">使供給曲線移動的 5 大因素</h4>
+              <ul className="list-disc pl-5 text-slate-600 space-y-1">
+                <li>資源/原料成本 (牛肉變貴 ➔ 漢堡供給↓)</li>
+                <li>生產者數量 (更多農夫種菜 ➔ 供給↑)</li>
+                <li>科技進步 (機器自動化 ➔ 供給↑)</li>
+                <li>政府政策 (收稅 ➔ 供給↓；補貼 ➔ 供給↑)</li>
+                <li>預期利潤 (預期未來更好賺 ➔ 囤貨，現在供給↓)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+            <p className="font-bold text-amber-800 mb-1">💡 彈性測試大法 (Total Revenue Test)</p>
+            <p className="text-amber-700">如何判斷一個商品有沒有彈性？看加價後的總收入 (Price × Quantity)。</p>
+            <ul className="list-disc pl-5 mt-2 text-amber-700">
+              <li><strong>無彈性 (Inelastic)：</strong> 加價 ➔ 總收入反而<strong>上升</strong>。(例子：油站加價，大家還是要入油，油站賺多了。這類商品適合抽稅！)</li>
+              <li><strong>有彈性 (Elastic)：</strong> 加價 ➔ 總收入<strong>下降</strong>。(例子：奢侈品手袋加價，大家罷買，品牌虧錢了。)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+
+    // 第二章：企業與市場
+    const Chapter2 = () => (
+      <div className="space-y-8 animate-fade-in-up">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-800 mb-4 border-b-2 border-indigo-200 pb-2">2. 企業行為與市場結構</h2>
+          <p className="text-slate-600 mb-6">了解企業如何計算成本，以及在不同市場環境下如何定價以實現<strong>利潤最大化 (MR = MC)</strong>。</p>
+        </div>
+
+        {/* 成本曲線 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">🏭 生產成本法則 (Cost Curves)</h3>
+          
+          <div className="bg-amber-50 rounded-lg p-4 mb-4 border border-amber-200">
+            <p className="font-bold text-amber-800 mb-1">💡 生活例子：邊際成本 (MC) 如何拉動 平均成本 (ATC)</p>
+            <p className="text-amber-700">把 <strong>ATC</strong> 想像成你的學期平均 GPA，把 <strong>MC</strong> 想像成你最新一次考試的分數。
+            <br/>如果最新考的分數 (MC) <strong>低於</strong> GPA (ATC) ➔ 你的 GPA (ATC) 就會被<strong>拉低</strong>。
+            <br/>如果最新考的分數 (MC) <strong>高於</strong> GPA (ATC) ➔ 你的 GPA (ATC) 就會被<strong>拉高</strong>。
+            <br/>因此，MC 曲線永遠在 ATC 的<strong>最低點</strong>與它相交！</p>
+          </div>
+
+          <table>
+            <thead><tr><th>成本概念</th><th>定義</th><th>特性 / 形狀</th></tr></thead>
+            <tbody>
+              <tr><td><strong>固定成本 (FC)</strong></td><td>不隨產量改變的成本 (如租金)</td><td>即使停工(產量0)也要交的錢</td></tr>
+              <tr><td><strong>可變成本 (VC)</strong></td><td>隨產量增加的成本 (如麵粉、時薪)</td><td>不開工就不用付</td></tr>
+              <tr><td><strong>平均固定成本 (AFC)</strong></td><td>FC / 產量</td><td>產量越大，分攤越薄，曲線永遠向下不碰底</td></tr>
+              <tr><td><strong>邊際成本 (MC)</strong></td><td>多造一件產品額外增加的成本</td><td>U型曲線 (先跌後升，因邊際產量遞減)</td></tr>
+            </tbody>
+          </table>
+          <p className="text-sm font-bold text-slate-600 mt-2">核心公式：ATC = AVC + AFC ； 利潤 = (Price - ATC) × 數量</p>
+        </div>
+
+        {/* 四大市場結構 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-purple-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">🏪 四大市場結構對比</h3>
+          <table>
+            <thead><tr><th>市場類型</th><th>特徵</th><th>例子</th><th>需求曲線 (Demand)</th><th>長期經濟利潤</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>完全競爭<br/>(Perfect Comp.)</strong></td>
+                <td>無數賣家，產品一模一樣，自由進出</td>
+                <td>農產品 (如白菜)</td>
+                <td>水平線 (P = MR = AR = D)</td>
+                <td><strong>0</strong> (一賺錢就有對手湧入)</td>
+              </tr>
+              <tr>
+                <td><strong>壟斷競爭<br/>(Monopolistic Comp.)</strong></td>
+                <td>賣家多，但產品各有特色</td>
+                <td>茶餐廳、洗髮水</td>
+                <td>向下傾斜 (有微弱定價權)</td>
+                <td><strong>0</strong> (長期需求線切著ATC)</td>
+              </tr>
+              <tr>
+                <td><strong>寡頭<br/>(Oligopoly)</strong></td>
+                <td>少數幾家大公司霸佔，互相牽制</td>
+                <td>電訊商、航空公司</td>
+                <td>向下傾斜 (適用博弈論)</td>
+                <td>可能 > 0</td>
+              </tr>
+              <tr>
+                <td><strong>壟斷<br/>(Monopoly)</strong></td>
+                <td>獨市生意，極高進入壁壘</td>
+                <td>自來水、專利藥</td>
+                <td>向下傾斜 (<strong>MR 永遠低於 Demand</strong>)</td>
+                <td><strong>> 0</strong> (持續賺大錢)</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <div className="bg-rose-50 p-4 mt-4 rounded-lg border border-rose-200">
+            <h4 className="font-bold text-rose-800 mb-2">⚠️ 考試重點：壟斷為什麼會造成「無謂損失 (Deadweight Loss)」？</h4>
+            <p className="text-rose-700 text-sm">因為壟斷者為了追求最高利潤，會把產量定在 <strong>MR = MC</strong> 的位置，這個產量<strong>小於</strong>社會最理想的產量 (Price = MC)。產量少了，價格貴了，這中間消失的社會價值就是無謂損失。</p>
+          </div>
+        </div>
+
+        {/* 博弈論 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-amber-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">🎲 寡頭與博弈論 (Game Theory)</h3>
+          <p className="text-slate-600 mb-2">分析寡頭企業如何制定策略。<strong>占優策略 (Dominant Strategy)</strong> 是指「不管對手怎麼選，對你來說永遠最好的選擇」。</p>
+          <ul className="list-disc pl-5 text-slate-600">
+            <li><strong>囚徒困境：</strong> 說明了即使雙方合作(如串謀定高價)能賺最多，但出於不信任及自身利益，最終往往會雙雙減價，落入次優的<strong>納什均衡 (Nash Equilibrium)</strong>。</li>
+          </ul>
+        </div>
+      </div>
+    );
+
+    // 第三章：宏觀經濟
+    const Chapter3 = () => (
+      <div className="space-y-8 animate-fade-in-up">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-800 mb-4 border-b-2 border-indigo-200 pb-2">3. 宏觀指標與經濟波動</h2>
+          <p className="text-slate-600 mb-6">宏觀經濟為國家把脈，主要看三大指標：GDP(產量)、失業率(就業)、CPI(物價)。</p>
+        </div>
+
+        {/* GDP */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">📊 GDP (國內生產總值)</h3>
+          <p className="text-slate-600 mb-2"><strong>GDP = C (消費) + I (投資) + G (政府開支) + NX (淨出口)</strong></p>
+          <div className="bg-amber-50 rounded-lg p-4 mb-4 border border-amber-200">
+            <p className="font-bold text-amber-800 mb-1">💡 甚麼不計入 GDP？</p>
+            <ul className="list-disc pl-5 text-amber-700 text-sm">
+              <li><strong>中間產品：</strong> 買車用音響不計，因為已包在買新車的價錢裡，防重複計算。</li>
+              <li><strong>非生產交易：</strong> 買二手樓、二手車、炒股票都不計，因為沒有創造「新」產值。</li>
+              <li><strong>非市場活動：</strong> 在家自己煮飯、黑市交易不計。</li>
+            </ul>
+          </div>
+          <table className="mt-4">
+            <thead><tr><th>概念</th><th>特點</th><th>用途</th></tr></thead>
+            <tbody>
+              <tr><td><strong>名義 GDP (Nominal)</strong></td><td>用當年的物價計算，包含通脹水分。</td><td>容易高估經濟增長。</td></tr>
+              <tr><td><strong>實際 GDP (Real)</strong></td><td>用「基期(Base Year)」的固定價格計算。</td><td>剔除通脹，反映真實產量的增長。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 失業與通脹 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-rose-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">📉 失業 (Unemployment) 與 通脹 (Inflation)</h3>
+          <h4 className="font-bold text-slate-700 mt-4 mb-2">失業的三大類型：</h4>
+          <table>
+            <thead><tr><th>類型</th><th>原因</th><th>生活例子</th></tr></thead>
+            <tbody>
+              <tr><td><strong>摩擦性 (Frictional)</strong></td><td>轉工、找工作的過渡期 (短期)</td><td>大學生剛畢業，正在找理想的工作。</td></tr>
+              <tr><td><strong>結構性 (Structural)</strong></td><td>技能被時代淘汰，回不去了 (長期)</td><td>修錄影機的師傅失業；AI取代初級翻譯。</td></tr>
+              <tr><td><strong>週期性 (Cyclical)</strong></td><td>經濟衰退，整體需求不足</td><td>金融海嘯導致大公司裁員。</td></tr>
+            </tbody>
+          </table>
+          <p className="text-sm text-slate-600 mt-2 font-bold">⚠️ 充分就業 (Full Employment) ≠ 0失業率。它指的是「沒有週期性失業」，通常自然失業率(摩擦+結構)約為 4-6%。</p>
+          
+          <h4 className="font-bold text-slate-700 mt-6 mb-2">通脹的贏家與輸家：</h4>
+          <p className="text-slate-600 mb-2">CPI (消費者物價指數) 衡量通脹。基年的 CPI 永遠是 100。</p>
+          <ul className="list-disc pl-5 text-slate-600 space-y-1">
+            <li><strong>👍 贏家 (獲益)：</strong> 借錢的人 (Borrowers) — 借的錢貶值了，還錢時實際上負擔輕了。</li>
+            <li><strong>👎 輸家 (受害)：</strong> 存錢的人 (Savers)、固定收入者 (Fixed-income) — 購買力被通脹吃掉。</li>
+          </ul>
+        </div>
+      </div>
+    );
+
+    // 第四章：宏觀模型與政策
+    const Chapter4 = () => (
+      <div className="space-y-8 animate-fade-in-up">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-800 mb-4 border-b-2 border-indigo-200 pb-2">4. 宏觀模型與政策調節</h2>
+          <p className="text-slate-600 mb-6">當經濟生病（衰退或過熱）時，政府和央行如何吃藥（財政政策與貨幣政策）來把 <strong>總需求 (AD)</strong> 拉回正軌。</p>
+        </div>
+
+        {/* AD-AS 模型 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-emerald-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">📈 總需求與總供給 (AD-AS Model)</h3>
+          <p className="text-slate-600 mb-4">這是宏觀經濟的終極核心模型。</p>
+          <table>
+            <thead><tr><th>曲線</th><th>移動因素</th><th>例子</th></tr></thead>
+            <tbody>
+              <tr><td><strong>總需求 (AD) 右移</strong><br/>(經濟變好/通脹)</td><td>C, I, G, NX 任何一個增加</td><td>政府狂建高鐵 (G↑)；央行減息，大家借錢買機床 (I↑)。</td></tr>
+              <tr><td><strong>短缺總供給 (SRAS) 左移</strong><br/>(滯脹 Stagflation)</td><td>生產成本(如工資、油價)上升</td><td>石油危機導致油價暴漲，工廠倒閉，物價升且產量跌。</td></tr>
+              <tr><td><strong>長期總供給 (LRAS) 右移</strong><br/>(真實經濟增長)</td><td>資本累積、科技進步</td><td>投資增加建了更多新工廠，國家生產潛力永久提升。</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 財政與貨幣政策 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">💊 兩大經濟救星：財政政策 vs 貨幣政策</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <h4 className="font-bold text-slate-700 mb-2">🏛️ 財政政策 (政府出手)</h4>
+              <p className="text-sm text-slate-600 mb-2">調控 <strong>政府開支 (G)</strong> 和 <strong>稅收 (T)</strong>。</p>
+              <ul className="list-disc pl-5 text-sm text-slate-600">
+                <li><strong>衰退時 (擴張性)：</strong> 增加基建開支、減稅 ➔ 大家手頭錢多 ➔ AD 右移。</li>
+                <li><strong>過熱時 (緊縮性)：</strong> 減少開支、加稅 ➔ 降溫。</li>
+                <li><span className="font-bold text-red-600">副作用 - 擠出效應 (Crowding out)：</span>政府為了開支大量借錢 ➔ 推高利率 ➔ 私人企業嫌利息貴不投資了 (I↓)。</li>
+              </ul>
+            </div>
+            
+            <div className="bg-slate-50 p-4 rounded-lg">
+              <h4 className="font-bold text-slate-700 mb-2">🏦 貨幣政策 (美聯儲 Fed 出手)</h4>
+              <p className="text-sm text-slate-600 mb-2">調控 <strong>貨幣供應 (Money Supply)</strong> 和 <strong>利率</strong>。</p>
+              <ul className="list-disc pl-5 text-sm text-slate-600">
+                <li><strong>公開市場操作 (最常用)：</strong><br/>放水 = <strong>Buy</strong> bonds (央行買債給錢銀行) <br/>收水 = <strong>Sell</strong> bonds (央行賣債抽走資金)。</li>
+                <li><strong>法定準備金率 (Reserve Requirement)：</strong> 降低準備金，銀行能放更多貸款。</li>
+                <li><strong>貼現率 (Discount Rate)：</strong> 降低利息，鼓勵銀行向央行借錢。</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="bg-amber-50 rounded-lg p-4 border border-amber-200">
+            <p className="font-bold text-amber-800 mb-1">💡 貨幣乘數 (Money Multiplier)</p>
+            <p className="text-amber-700">公式：<strong>1 / 法定準備金率</strong>。假設準備金率是 10%，乘數就是 10。央行每買 100 蚊債券注入銀行，銀行透過不斷放貸，最終能把市場上的總貨幣供應變成 100 × 10 = 1000 蚊！</p>
+          </div>
+        </div>
+      </div>
+    );
+
+    // 第五章：國際經濟
+    const Chapter5 = () => (
+      <div className="space-y-8 animate-fade-in-up">
+        <div>
+          <h2 className="text-3xl font-bold text-slate-800 mb-4 border-b-2 border-indigo-200 pb-2">5. 國際經濟與外匯</h2>
+          <p className="text-slate-600 mb-6">探討國與國之間的金錢遊戲：貿易帳本怎麼記？匯率升跌誰說了算？</p>
+        </div>
+
+        {/* 國際收支平衡表 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-emerald-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">📒 國際收支平衡表 (Balance of Payments, BOP)</h3>
+          <p className="text-slate-600 mb-4">BOP 是一國與他國金錢往來的總帳本，兩大帳戶互為鏡像，加起來必須為零（一邊赤字，另一邊必定盈餘）。</p>
+          <table>
+            <thead><tr><th>帳戶名稱</th><th>記錄內容</th><th>生活例子</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><strong>經常帳戶<br/>(Current Account)</strong></td>
+                <td>實體商品與服務的進出口 (Exports & Imports)</td>
+                <td>美國買了大量中國製造的手機 (美國出現經常帳戶赤字)。</td>
+              </tr>
+              <tr>
+                <td><strong>金融/資本帳戶<br/>(Financial Account)</strong></td>
+                <td>資產的跨國買賣 (股票、債券、工廠)</td>
+                <td>中國賺了美金後，買了美國國債 (美國出現金融帳戶盈餘，外資流入)。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 外匯與匯率 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-blue-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">💱 外匯市場與匯率升貶值</h3>
+          <p className="text-slate-600 mb-4">貨幣的升值 (Appreciation) 與貶值 (Depreciation) 完全由供需決定，而且兩國貨幣是蹺蹺板，一個升另一個必跌。</p>
+          
+          <div className="bg-amber-50 rounded-lg p-4 mb-4 border border-amber-200">
+            <p className="font-bold text-amber-800 mb-1">💡 考試超級重點：利率 (Interest Rate) 決定匯率！</p>
+            <p className="text-amber-700">記住法則：<strong>「哪國利率高，熱錢往哪跑，該國貨幣就升值。」</strong><br/>例如美國加息 (利息 7%)，加拿大沒加 (利息 2%)。加拿大投資者為了賺高息，會賣出加幣，買入美金去美國買債券。結果 ➔ 對美金需求大增 (美金升值)，加幣被拋售 (加幣貶值)。</p>
+          </div>
+
+          <table>
+            <thead><tr><th>匯率變化</th><th>對出口的影響 (Exports)</th><th>對進口的影響 (Imports)</th><th>對淨出口 (NX) 的影響</th></tr></thead>
+            <tbody>
+              <tr>
+                <td className="text-red-600 font-bold">本幣升值 (Appreciation)</td>
+                <td>外國人覺得變貴了 ➔ 出口跌</td>
+                <td>自己覺得外國貨平了 ➔ 進口升</td>
+                <td><strong>淨出口大幅減少</strong> (拖累 GDP)</td>
+              </tr>
+              <tr>
+                <td className="text-green-600 font-bold">本幣貶值 (Depreciation)</td>
+                <td>外國人覺得好便宜 ➔ 出口升</td>
+                <td>自己覺得外國貨好貴 ➔ 進口跌</td>
+                <td><strong>淨出口大幅增加</strong> (刺激 GDP)</td>
+              </tr>
+            </tbody>
+          </table>
+          <p className="text-sm text-slate-500 mt-2">⚠️ 不要覺得貶值就是壞事！對於出口導向的國家，貨幣貶值反而能大大增強產品在國際上的競爭力。</p>
+        </div>
+
+        {/* 貿易保護 */}
+        <div className="bg-white rounded-xl shadow-sm p-6 border-l-4 border-rose-500">
+          <h3 className="text-xl font-bold text-slate-800 mb-3">🛡️ 關稅 vs 配額 (Tariffs vs Quotas)</h3>
+          <p className="text-slate-600 mb-2">兩者都是為了保護國內生產商（讓他們爽），但會傷害國內消費者（買貴貨），整體會造成<strong>無謂損失 (Deadweight Loss)</strong>。</p>
+          <ul className="list-disc pl-5 text-slate-600">
+            <li><strong>唯一區別：</strong> 關稅 (Tariff) 政府能收到稅款收入；但配額 (Quota) 只是限制數量，政府收不到錢。</li>
+          </ul>
+        </div>
+      </div>
+    );
+
+    // ==========================================
+    // 主應用程式組件
+    // ==========================================
+    function App() {
+      const [activeChapter, setActiveChapter] = useState(1);
+
+      const chapters = [
+        { id: 1, title: '1. 微觀: 基礎與市場', icon: '🛒' },
+        { id: 2, title: '2. 微觀: 企業與結構', icon: '🏭' },
+        { id: 3, title: '3. 宏觀: 指標與波動', icon: '📈' },
+        { id: 4, title: '4. 宏觀: 模型與政策', icon: '🏦' },
+        { id: 5, title: '5. 國際: 貿易與外匯', icon: '🌍' },
+      ];
+
+      const renderContent = () => {
+        switch(activeChapter) {
+          case 1: return <Chapter1 />;
+          case 2: return <Chapter2 />;
+          case 3: return <Chapter3 />;
+          case 4: return <Chapter4 />;
+          case 5: return <Chapter5 />;
+          default: return <Chapter1 />;
+        }
+      };
+
+      return (
+        <div className="min-h-screen flex flex-col md:flex-row max-w-6xl mx-auto shadow-2xl bg-slate-50">
+          {/* 左側導航欄 */}
+          <aside className="w-full md:w-72 bg-indigo-900 text-white flex flex-col">
+            <div className="p-6 bg-indigo-950">
+              <h1 className="text-2xl font-black leading-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-200 to-white">
+                CNEC 經濟學<br/>全知識精華筆記
+              </h1>
+              <p className="text-indigo-300 text-sm mt-2 font-medium">圖表化 × 生活例子速記版</p>
+            </div>
+            
+            <nav className="flex-1 p-4 flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-visible">
+              {chapters.map(chap => (
+                <button
+                  key={chap.id}
+                  onClick={() => setActiveChapter(chap.id)}
+                  className={`flex items-center gap-3 w-full text-left px-4 py-3 rounded-lg font-bold transition-all duration-200 flex-shrink-0 md:flex-shrink-auto whitespace-nowrap md:whitespace-normal
+                    ${activeChapter === chap.id 
+                      ? 'bg-indigo-600 text-white shadow-md translate-x-0 md:translate-x-2' 
+                      : 'text-indigo-200 hover:bg-indigo-800 hover:text-white'}`}
+                >
+                  <span className="text-xl">{chap.icon}</span>
+                  {chap.title}
+                </button>
+              ))}
+            </nav>
+            
+            <div className="p-4 text-xs text-indigo-400 text-center border-t border-indigo-800 hidden md:block">
+              備考衝刺專用・梳理複雜概念
+            </div>
+          </aside>
+
+          {/* 右側內容區 */}
+          <main className="flex-1 p-6 md:p-10 overflow-y-auto h-screen bg-slate-50/50">
+            {renderContent()}
+          </main>
+        </div>
+      );
+    }
+
+    // 掛載 React
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
